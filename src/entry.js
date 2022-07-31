@@ -20,8 +20,8 @@ const DiscordClient = new Client({
 });
 
 const DiscordWebhookClient = new WebhookClient({
-   id: process.env.WEBHOOK_ID,
-   token: process.env.WEBHOOK_TOKEN,
+   id: process.env.BOB_WEBHOOK_ID,
+   token: process.env.BOB_WEBHOOK_TOKEN,
 });
 
 const MESSAGE_REACTIONS = {
@@ -30,47 +30,71 @@ const MESSAGE_REACTIONS = {
 };
 
 const EMOJI_MAP = {
-   KEYS: ['🍎', '🍇', '🫐'],
-   '🍎': {
-      id: '1003343909767893142',
-      name: 'apple',
+   KEYS: ['🍷', '🥕', '🍌', '🥑', '🫐', '🍆'],
+   '🍷': {
+      id: '1003406020858621984',
+      name: 'wine_glass',
       role: {
-         id: '1003342184445120543',
+         id: '1003395944726929429',
          name: 'red',
       },
    },
-   '🍇': {
-      id: '1003343909767893142',
-      name: 'grapes',
+   '🥕': {
+      id: '1003406020858621984',
+      name: 'carrot',
       role: {
-         id: '1003342398098784336',
-         name: 'purple',
-      },
+         id: '1003404429988478987',
+         name: 'orange',
+      }
+   },
+   '🍌': {
+      id: '1003406020858621984',
+      name: 'banana',
+      role: {
+         id: '1003404342298169345',
+         name: 'yellow',
+      }
+   },
+   '🥑': {
+      id: '1003406020858621984',
+      name: 'avocado',
+      role: {
+         id: '1003404487395913768',
+         name: 'green',
+      }
    },
    '🫐': {
       id: '1003343909767893142',
       name: 'blueberries',
       role: {
-         id: '1003342448015200347',
+         id: '1003396350014128209',
          name: 'blue',
       }
+   },
+   '🍆': {
+      id: '1003406020858621984',
+      name: 'eggplant',
+      role: {
+         id: '1003396239997554760',
+         name: 'purple',
+      },
    },
 };
 
 const onMessageReaction = async (reaction, user, type) => {
    const { name } = reaction.emoji;
-   if (reaction.message.id !== process.env.SPAM_CHANNEL_ROLES_COLOR_ID || !user.id) return;
+   if (reaction.message.id !== process.env.BOB_CHANNEL_ROLES_MESSAGE_COLOR_ID || !user.id) return;
 
    const member = reaction.message.guild.members.cache.get(user.id);
 
    if (type === MESSAGE_REACTIONS.ADD_EMOJI) {
       try {
          member.roles.add(EMOJI_MAP[name].role.id);
-         DiscordWebhookClient.send(`Yippee ${user.username} u r da color ${EMOJI_MAP[name].role.name} meow`);
+         DiscordWebhookClient.send(`Yippee @${user.username} u r da color ${EMOJI_MAP[name].role.name} meow`);
          EMOJI_MAP.KEYS.forEach(async (emoji) => {
             if (name !== emoji) {
                reaction.message.guild.members.cache.get(user.id).roles.remove(EMOJI_MAP[emoji].role.id);
-               const message = await DiscordClient.channels.cache.get(process.env.SPAM_CHANNEL_ROLES_ID).messages.fetch(process.env.SPAM_CHANNEL_ROLES_COLOR_ID)
+               const message = await DiscordClient.channels.cache.get(process.env.BOB_CHANNEL_ROLES_ID).messages.fetch(process.env.BOB_CHANNEL_ROLES_MESSAGE_COLOR_ID)
                message.reactions.resolve(emoji)?.users.remove(user.id);
             }
          });
@@ -88,8 +112,8 @@ const onMessageReaction = async (reaction, user, type) => {
 DiscordClient.once('ready', () => {
    console.log(`${DiscordClient.user.tag} has logged in!`);
    DiscordClient.channels.cache
-      .get(process.env.SPAM_CHANNEL_ROLES_ID).messages
-      .fetch(process.env.SPAM_CHANNEL_ROLES_COLOR_ID).then(() => {
+      .get(process.env.BOB_CHANNEL_ROLES_ID).messages
+      .fetch(process.env.BOB_CHANNEL_ROLES_MESSAGE_COLOR_ID).then(() => {
          DiscordClient.on('messageReactionAdd', (reaction, user) => onMessageReaction(reaction, user, MESSAGE_REACTIONS.ADD_EMOJI));
          DiscordClient.on('messageReactionRemove', (reaction, user) => onMessageReaction(reaction, user, MESSAGE_REACTIONS.REMOVE_EMOJI));
       });
