@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/rostun/bottie-mc-wottie/issues"
   },
-  "homepage": "https://github.com/rostun/bottie-mc-wottie#readme"
+  "homepage": "https://github.com/rostun/bottie-mc-wottie#readme",
+  "dependencies": {
+    "discord.js": "^14.1.2"
+  }
 }
