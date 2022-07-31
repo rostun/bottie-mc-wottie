@@ -90,7 +90,7 @@ const onMessageReaction = async (reaction, user, type) => {
    if (type === MESSAGE_REACTIONS.ADD_EMOJI) {
       try {
          member.roles.add(EMOJI_MAP[name].role.id);
-         DiscordWebhookClient.send(`Yippee @${user.username} u r da color ${EMOJI_MAP[name].role.name} meow`);
+         DiscordWebhookClient.send(`Yippee ${user.username} u r da color ${EMOJI_MAP[name].role.name} meow`);
          EMOJI_MAP.KEYS.forEach(async (emoji) => {
             if (name !== emoji) {
                reaction.message.guild.members.cache.get(user.id).roles.remove(EMOJI_MAP[emoji].role.id);
