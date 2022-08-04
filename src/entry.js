@@ -30,13 +30,21 @@ const MESSAGE_REACTIONS = {
 };
 
 const EMOJI_MAP = {
-   KEYS: ['🍷', '🥕', '🍌', '🥑', '🫐', '🍆'],
+   KEYS: ['🍷', '🍑', '🥕', '🍌', '🍦', '🥑', '🫐', '🍇', '🍆'],
    '🍷': {
       id: '1003406020858621984',
       name: 'wine_glass',
       role: {
          id: '1003395944726929429',
          name: 'red',
+      },
+   },
+   '🍑': {
+      id: '1004013630766993488',
+      name: 'peach',
+      role: {
+         id: '1004014938257358888',
+         name: 'pink',
       },
    },
    '🥕': {
@@ -55,6 +63,14 @@ const EMOJI_MAP = {
          name: 'yellow',
       }
    },
+   '🍦': {
+      id: '1004020337471664228',
+      name: 'icecream',
+      role: {
+         id: '1004019026873303111',
+         name: 'cream',
+      }
+   },
    '🥑': {
       id: '1003406020858621984',
       name: 'avocado',
@@ -70,6 +86,14 @@ const EMOJI_MAP = {
          id: '1003396350014128209',
          name: 'blue',
       }
+   },
+   '🍇': {
+      id: '1003407149197709424',
+      name: 'grapes',
+      role: {
+         id: '1004017287445106688',
+         name: 'indigo',
+      },
    },
    '🍆': {
       id: '1003406020858621984',
@@ -90,7 +114,7 @@ const onMessageReaction = async (reaction, user, type) => {
    if (type === MESSAGE_REACTIONS.ADD_EMOJI) {
       try {
          member.roles.add(EMOJI_MAP[name].role.id);
-         DiscordWebhookClient.send(`Yippee ${user.username} u r da color ${EMOJI_MAP[name].role.name} meow`);
+         DiscordWebhookClient.send(`YIPPEE ${user.username} u r da color ${EMOJI_MAP[name].role.name} meow!!!`);
          EMOJI_MAP.KEYS.forEach(async (emoji) => {
             if (name !== emoji) {
                reaction.message.guild.members.cache.get(user.id).roles.remove(EMOJI_MAP[emoji].role.id);
