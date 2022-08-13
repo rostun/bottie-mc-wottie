@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/entry.js",
+    "spam": "nodemon ./src/entry.js",
+    "bob": "node ./src/entry.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +22,8 @@
   "dependencies": {
     "discord.js": "^14.1.2",
     "dotenv": "^16.0.1",
-    "node-cron": "^3.0.1"
+    "node-cron": "^3.0.1",
+    "uuid": "^8.3.2" 
   },
   "devDependencies": {
     "nodemon": "^2.0.19"

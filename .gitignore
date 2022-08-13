@@ -1,3 +1,5 @@
 node_modules
 .env
+.env.spam
+.env.bob
 yarn-error.log
