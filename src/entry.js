@@ -4,7 +4,6 @@ const cron = require('node-cron');
 
 const {
    Client,
-   WebhookClient,
    GatewayIntentBits,
 } = require('discord.js');
 
@@ -19,11 +18,6 @@ const DiscordClient = new Client({
       'CHANNEL',
       'REACTION',
    ],
-});
-
-const DiscordWebhookClient = new WebhookClient({
-   id: process.env.WEBHOOK_ID,
-   token: process.env.WEBHOOK_TOKEN,
 });
 
 const MESSAGE_REACTIONS = {
