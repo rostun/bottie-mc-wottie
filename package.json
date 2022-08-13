@@ -20,7 +20,8 @@
   "homepage": "https://github.com/rostun/bottie-mc-wottie#readme",
   "dependencies": {
     "discord.js": "^14.1.2",
-    "dotenv": "^16.0.1"
+    "dotenv": "^16.0.1",
+    "node-cron": "^3.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
