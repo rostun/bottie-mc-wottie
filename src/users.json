@@ -173,7 +173,8 @@
          "birthday": {
             "month": "10",
             "day": "10"
-         }
+         },
+         "timezone": "America/Los_Angeles"
       },
       {
          "id": "627982403318579211",

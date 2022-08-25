@@ -61,14 +61,20 @@ const scheduleBirthdayWishes = () => {
    const MainChannel = DiscordClient.channels.cache.get(process.env.CHANNEL_MAIN_ID);
    
    USERS[process.env.CHANNEL_KEY].forEach((user) => {
-      cron.schedule(`0 0 ${user.birthday.day} ${user.birthday.month} *`, () => {
-         const DiscordUser= user.id ? DiscordClient.users.cache.get(user.id) : user.name;
-         const RandomTextFace = TEXT_FACES[Math.floor(Math.random() * TEXT_FACES.length)]
+      cron.schedule(
+         `0 0 ${user.birthday.day} ${user.birthday.month} *`, 
+         () => {
+            const DiscordUser= user.id ? DiscordClient.users.cache.get(user.id) : user.name;
+            const RandomTextFace = TEXT_FACES[Math.floor(Math.random() * TEXT_FACES.length)]
 
-         MainChannel.send(`Good Morning and Happy Birthday ${DiscordUser}!`);
-         MainChannel.send(`For this happy little birthday here's a happy little "${RandomTextFace.name}" emoji: `);
-         MainChannel.send(`\n${RandomTextFace.text}`);
-      });
+            MainChannel.send(`Good Morning and Happy Birthday ${DiscordUser}!`);
+            MainChannel.send(`For this happy little birthday here's a happy little "${RandomTextFace.name}" emoji: `);
+            MainChannel.send(`\n${RandomTextFace.text}`);
+         }, 
+         {
+            timezone: user.timezone || 'America/New_York',
+         },
+      );
    });   
 };
 
