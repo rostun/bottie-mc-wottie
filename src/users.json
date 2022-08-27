@@ -21,14 +21,14 @@
          "name": "Madame EST Test",
          "birthday": {
             "month": "8",
-            "day": "27"
+            "day": "28"
          }
       },
       {
          "name": "Monsieur  PST Test",
          "birthday": {
             "month": "8",
-            "day": "27"
+            "day": "28"
          },
          "timezone": "America/Los_Angeles"
       },
