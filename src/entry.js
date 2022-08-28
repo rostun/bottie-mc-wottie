@@ -72,6 +72,7 @@ const scheduleBirthdayWishes = () => {
             MainChannel.send(`\n${RandomTextFace.text}`);
          }, 
          {
+            scheduled: true,
             timezone: user.timezone || 'America/New_York',
          },
       );
