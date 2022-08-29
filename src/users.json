@@ -18,21 +18,6 @@
    ],
    "BOB": [
       {
-         "name": "Madame EST Test",
-         "birthday": {
-            "month": "8",
-            "day": "29"
-         }
-      },
-      {
-         "name": "Monsieur PST Test",
-         "birthday": {
-            "month": "8",
-            "day": "29"
-         },
-         "timezone": "America/Los_Angeles"
-      },
-      {
          "id": "695781741230555196",
          "name": "Allie",
          "birthday": {
