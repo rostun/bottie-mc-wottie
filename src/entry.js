@@ -16,6 +16,7 @@ const DiscordClient = new Client({
       GatewayIntentBits.Guilds,
       GatewayIntentBits.GuildMessages,
       GatewayIntentBits.GuildMessageReactions,
+      GatewayIntentBits.GuildPresences,
    ],
    partials: [
       'MESSAGE',
